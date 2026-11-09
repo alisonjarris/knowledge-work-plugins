@@ -78,3 +78,9 @@ As your team builds and shares plugins, Claude becomes a cross-functional expert
 ## Contributing
 
 Plugins are just markdown files. Fork the repo, make your changes, and submit a PR.
+
+### Anthropic OIDC example
+
+The manually dispatched **Anthropic OIDC Example** workflow exchanges a GitHub Actions OIDC token for a short-lived Anthropic token and sends a sample prompt to the Messages API. Configure a [GitHub Actions workload identity federation rule](https://platform.claude.com/docs/en/manage-claude/wif-providers/github-actions) for this repository and restrict its claims to trusted refs/workflows. The rule must grant `workspace:inference` or `workspace:developer` access.
+
+Set repository or organization variables `ANTHROPIC_FEDERATION_RULE_ID`, `ANTHROPIC_ORGANIZATION_ID`, and `ANTHROPIC_SERVICE_ACCOUNT_ID`. Set `ANTHROPIC_WORKSPACE_ID` when the rule has multiple workspaces. Optionally set `ANTHROPIC_MODEL` to an available model; the default is `claude-sonnet-4-6`. The originally requested `claude-3-7-sonnet-20250219` was [retired](https://platform.claude.com/docs/en/about-claude/model-deprecations) on February 19, 2026.
